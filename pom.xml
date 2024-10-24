@@ -62,7 +62,7 @@
       <dependency>
         <groupId>liboqs-java</groupId>
         <artifactId>liboqs-java</artifactId>
-        <version>1.0</version>
+        <version>0.1.0</version>
         <scope>system</scope>
         <systemPath>/home/ubuntu/liboqs-java/target/liboqs-java.jar</systemPath>
       </dependency>
