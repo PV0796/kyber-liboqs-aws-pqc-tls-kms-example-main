@@ -60,8 +60,8 @@
             <version>1.10</version>
         </dependency>
       <dependency>
-        <groupId>com.example</groupId>
-        <artifactId>my-library</artifactId>
+        <groupId>liboqs-java</groupId>
+        <artifactId>liboqs-java</artifactId>
         <version>1.0</version>
         <scope>system</scope>
         <systemPath>/home/ubuntu/liboqs-java/target/liboqs-java.jar</systemPath>
