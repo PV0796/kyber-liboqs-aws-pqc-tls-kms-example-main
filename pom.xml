@@ -62,7 +62,7 @@
          <dependency>
             <groupId>org.open-quantum-safe</groupId>
             <artifactId>liboqs-java</artifactId>
-            <version>0.9.0</version> <!-- Check for the latest version -->
+            <version>0.1.0</version> <!-- Check for the latest version -->
         </dependency>
     </dependencies>
     <build>
