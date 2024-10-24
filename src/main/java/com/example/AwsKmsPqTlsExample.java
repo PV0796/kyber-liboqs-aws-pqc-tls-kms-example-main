@@ -60,12 +60,7 @@ public class AwsKmsPqTlsExample {
     private static final Random SECURE_RANDOM = new SecureRandom();
     private static final int AES_KEY_SIZE_BYTES = 256 / 8;
 
-    private static final String KEM_ALGORITHM = "Kyber";
-    private static final AlgorithmParameterSpec KEM_PARAMETER_SPEC = KyberParameterSpec.kyber512;
-    private static final String PROVIDER = "BCPQC";
-    private static final String ENCRYPTION_ALGORITHM = "AES";
-    private static final String MODE_PADDING = "AES/ECB/PKCS5Padding"; // ECB mode with PKCS5 padding
-
+    
     public static void main(String[] args) throws Exception {
         /*
          * Set up a PQ TLS HTTP client that will be used in the rest of the example. This will optimistically enable
