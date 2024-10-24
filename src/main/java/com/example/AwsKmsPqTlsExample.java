@@ -18,7 +18,9 @@
 
 package com.example;
 
-import org.oqs.kyber.Kyber;
+import org.openquantumsafe.*;
+import java.util.Arrays;
+
 
 import com.example.crypto.RSAUtils;
 import software.amazon.awssdk.core.SdkBytes;
@@ -108,12 +110,11 @@ public class AwsKmsPqTlsExample {
             //System.out.println("Public Key: " + bytesToHex(kyberKeyPair.getPublic().getEncoded()));
             //System.out.println("Secret Key: " + bytesToHex(kyberKeyPair.getPrivate().getEncoded()));
 
-            Kyber kyber = new Kyber();
-
-            // Generate key pair
-            byte[] publicKey = new byte[kyber.getPublicKeyBytes()];
-            byte[] privateKey = new byte[kyber.getPrivateKeyBytes()];
-
+            String kem_name = "Kyber512";
+            KeyEncapsulation client = new KeyEncapsulation(kem_name);
+            byte[] client_public_key = client.generate_keypair();
+            byte[] secret_key = client.export_secret_key();
+            LOG.info(() -> "Created secret Key " + secret_key);
         /*
          * Import key material workflow with hybrid post-quantum TLS
          *
@@ -165,7 +166,7 @@ public class AwsKmsPqTlsExample {
          * it could decrypt the RSA-wrapped key to recover your plaintext AES key.
          */
         RSAPublicKey rsaPublicKey = RSAUtils.decodeX509PublicKey(publicKeyBytes);
-        byte[] encryptedAesKey = RSAUtils.encryptRSA(rsaPublicKey, privateKey.getEncoded());
+        byte[] encryptedAesKey = RSAUtils.encryptRSA(rsaPublicKey, secret_key.getEncoded());
 
         /*
          * Step 4: Import the key material using the CMK ID, wrapped key material, and import token. This is the
